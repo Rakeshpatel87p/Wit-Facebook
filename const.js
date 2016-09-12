@@ -1,18 +1,21 @@
 'use strict';
 
 // Wit.ai parameters
-const WIT_TOKEN = process.env.WIT_TOKEN;
-if (!WIT_TOKEN) {
-  throw new Error('missing WIT_TOKEN');
-}
+const WIT_TOKEN = 'DWSEWR32EUMTTQ3LNXNQELNQA4ZL4QS2';
+
+// process.env.WIT_TOKEN;
+// if (!WIT_TOKEN) {
+//   throw new Error('missing WIT_TOKEN');
+// }
 
 // Messenger API parameters
 const FB_PAGE_TOKEN = process.env.FB_PAGE_TOKEN;
 
-var FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN;
-if (!FB_VERIFY_TOKEN) {
-  FB_VERIFY_TOKEN = "just_do_it";
-}
+var FB_VERIFY_TOKEN = 'just_do_it'
+// process.env.FB_VERIFY_TOKEN;
+// if (!FB_VERIFY_TOKEN) {
+//   FB_VERIFY_TOKEN = "just_do_it";
+// }
 
 module.exports = {
   WIT_TOKEN: WIT_TOKEN,
