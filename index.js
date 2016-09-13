@@ -130,7 +130,8 @@ app.post('/webhook', (req, res) => {
           }
         }
       );
+      res.sendStatus(200).json({});
     }
   }
-  // res.sendStatus(200).json({});
+  
 });
