@@ -1,0 +1,14 @@
+API:
+Inputs: { 	Location of request: user types it
+			Destination: types it in.
+	}
+	
+	Output to user:
+		Google Maps Directions API = API(AIzaSyA_2lY9VZ5_ohmSOkdvaDN2cGryDcecwmU)
+			Distance
+			Time to reach
+			Best route
+			
+			Other Info:
+			traffic?
+			alternate routes - est. time of arrival

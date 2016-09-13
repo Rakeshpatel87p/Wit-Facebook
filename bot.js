@@ -1,7 +1,5 @@
 'use strict';
 
-// Weather Example
-// See https://wit.ai/sungkim/weather/stories and https://wit.ai/docs/quickstart
 const Wit = require('node-wit').Wit;
 const FB = require('./facebook.js');
 const Config = require('./const.js');
@@ -33,6 +31,7 @@ const actions = {
     // Let's retrieve the Facebook user whose session belongs to from context
     // TODO: need to get Facebook user name
     const recipientId = context._fbid_;
+    console.log(recipientId);
     if (recipientId) {
       // Yay, we found our recipient!
       // Let's forward our bot response to her.
