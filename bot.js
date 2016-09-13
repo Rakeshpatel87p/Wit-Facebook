@@ -31,10 +31,12 @@ const actions = {
         // Let's retrieve the Facebook user whose session belongs to from context
         // TODO: need to get Facebook user name
         const recipientId = context._fbid_;
+        console.log("FB ID", recipientId);
         if (recipientId) {
             // Yay, we found our recipient!
             // Let's forward our bot response to her.
             FB.fbMessage(recipientId, message, (err, data) => {
+              console.log("MESSAGE", message);
                 if (err) {
                     console.log(
                         'Oops! An error occurred while forwarding the response to',
