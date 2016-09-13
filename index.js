@@ -61,15 +61,17 @@ app.get('/', function(req, res) {
   res.send('"Only those who will risk going too far can possibly find out how far one can go." - T.S. Eliot');
 });
 
-// Webhook verify setup using FB_VERIFY_TOKEN
+// Webhook verify setup using FB_VERIFY_TOKEN'
 app.get('/webhook', (req, res) => {
   if (!Config.FB_VERIFY_TOKEN) {
+    console.log(!Config.FB_VERIFY_TOKEN);
     throw new Error('missing FB_VERIFY_TOKEN');
   }
   if (req.query['hub.mode'] === 'subscribe' &&
     req.query['hub.verify_token'] === Config.FB_VERIFY_TOKEN) {
     res.send(req.query['hub.challenge']);
   } else {
+    // Error here
     res.sendStatus(400);
   }
 });
@@ -78,6 +80,7 @@ app.get('/webhook', (req, res) => {
 app.post('/webhook', (req, res) => {
   // Parsing the Messenger API response
   const messaging = FB.getFirstMessagingEntry(req.body);
+  console.log('BODY', req.body);
   if (messaging && messaging.message) {
 
     // Yay! We got a new message!
@@ -87,7 +90,6 @@ app.post('/webhook', (req, res) => {
     // We retrieve the user's current session, or create one if it doesn't exist
     // This is needed for our bot to figure out the conversation history
     const sessionId = findOrCreateSession(sender);
-    console.log('sessionID', sessionId);
     // We retrieve the message content
     const msg = messaging.message.text;
     const atts = messaging.message.attachments;
@@ -130,5 +132,5 @@ app.post('/webhook', (req, res) => {
       );
     }
   }
-  res.sendStatus(200);
+  res.sendStatus(200).json(res);
 });
