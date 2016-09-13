@@ -17,24 +17,6 @@ const fbReq = request.defaults({
     },
 });
 
-// Getting google maps stuff
-const directionDetails = request.get({
-    uri: 'https://maps.googleapis.com/maps/api/directions',
-    method: 'GET',
-    json: true,
-    // Is this proper? For https://maps.googleapis.com/maps/api/directions/json?origin=aaa?destination=bbb?key=
-    qs: {
-        origin: 'Atlanta',
-        destination: 'Orlando',
-        key: 'AIzaSyA_2lY9VZ5_ohmSOkdvaDN2cGryDcecwmU'
-    },
-
-}, (response, err) => {
-    if (err) return response(200).json(err)
-    console.log(response);
-
-});
-
 const fbMessage = (recipientId, msg, cb) => {
     const opts = {
         form: {
@@ -54,7 +36,6 @@ const fbMessage = (recipientId, msg, cb) => {
     });
 };
 
-
 // See the Webhook reference
 // https://developers.facebook.com/docs/messenger-platform/webhook-reference
 const getFirstMessagingEntry = (body) => {
@@ -70,7 +51,6 @@ const getFirstMessagingEntry = (body) => {
 
     return val || null;
 };
-
 
 module.exports = {
     getFirstMessagingEntry: getFirstMessagingEntry,

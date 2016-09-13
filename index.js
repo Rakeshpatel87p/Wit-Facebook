@@ -84,15 +84,13 @@ app.post('/webhook', (req, res) => {
 
     // We retrieve the Facebook user ID of the sender
     const sender = messaging.sender.id;
-
     // We retrieve the user's current session, or create one if it doesn't exist
     // This is needed for our bot to figure out the conversation history
     const sessionId = findOrCreateSession(sender);
-
+    console.log('sessionID', sessionId);
     // We retrieve the message content
     const msg = messaging.message.text;
     const atts = messaging.message.attachments;
-
     if (atts) {
       // We received an attachment
 
